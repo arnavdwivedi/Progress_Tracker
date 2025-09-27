@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* --- Overall Progress & Input (Same as before) --- */
+h1, .input-section, #task-input, #add-task-btn, .progress-section, #overall-progress-bar-container, #overall-progress-bar, #overall-progress-text {
+    /* Styles are unchanged */
+    margin-bottom: 20px;
+}
+.input-section { display: flex; gap: 10px; }
+#task-input { flex-grow: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+#add-task-btn { padding: 10px 15px; background-color: #5cb85c; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+.progress-bar-container { width: 100%; background-color: #e9ecef; border-radius: 5px; height: 20px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background-color: #007bff; border-radius: 5px; transition: width 0.4s ease; }
+#overall-progress-text { margin-top: 5px; color: #555; margin-bottom: 0; }
+h1 { margin-bottom: 20px; }
+
+
+/* --- Task List & Items --- */
+#task-list { list-style: none; padding: 0; text-align: left; }
+.task-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s;
+}
+.task-item.completed { background-color: #f0fff0; }
+.task-item.completed .task-text { text-decoration: line-through; color: #888; }
+.task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.task-text { font-size: 18px; }
+.task-item-controls { margin-top: 15px; }
+
+/* --- Individual Task Progress Bar --- */
+.task-progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    height: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.task-progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+/* --- Step & Rollback Buttons --- */
+.task-action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.step-btn, .rollback-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+.step-btn { background-color: #007bff; color: white; }
+.step-btn:hover { background-color: #0056b3; }
+.step-btn:disabled { background-color: #cccccc; cursor: not-allowed; }
+.rollback-btn { background-color: #ffc107; color: #333; }
+.rollback-btn:hover { background-color: #e0a800; }
+.rollback-btn:disabled { background-color: #cccccc; cursor: not-allowed; }
+.task-progress-value { font-weight: bold; font-size: 16px; color: #333; }
+
+/* --- Edit/Delete Buttons --- */
+.task-buttons button { background: none; border: none; font-size: 16px; margin-left: 10px; cursor: pointer; }
+.edit-btn { color: #6c757d; }
+.delete-btn { color: #dc3545; }
+
+/* --- Modal Styles --- */
+/* ... (all previous styles remain the same) ... */
+
+/* --- Modal Styles --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s;
+    transition: transform 0.3s;
+}
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal-content h2 { color: #4CAF50; }
+
+/* --- UPDATED: Style for the "All Done" popup --- */
+.modal-content.all-done {
+    max-width: 500px; /* Make it wider */
+    padding: 40px;
+}
+.modal-content.all-done h2 {
+    color: #007bff; /* Blue accent color */
+    font-size: 2.5em; /* Make the heading bigger */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ... (all other styles for task items, buttons, etc. remain the same) ... */
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
